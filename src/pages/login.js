@@ -1,45 +1,44 @@
-import React from "react";
+import React, { Component } from "react";
+import styles from "./login.css";
 
-import styles from './login.css';
-import router from 'umi/router';
-
-import { Login } from "ant-design-pro"
-import { connect } from 'dva'
+import { Login } from "ant-design-pro";
+import { connect } from "dva";
 
 const { UserName, Password, Submit } = Login;
 
-export default connect()(function ({dispatch}) {
-  // let from = props.location.state.from || "/"; // 重定向地址
-
-  const onSubmit = (err, values) => {
-    console.log(err, values);
-
+@connect()
+export default class extends Component {
+  onSubmit = (err, values) => {
+    console.log("用户输入：", values);
     if (!err) {
-
-      //登录
-      dispatch({ type: 'user/login', payload: values })
+      // 校验通过，提交登录
+      this.props.dispatch({ type: "user/login", payload: values });
     }
   };
-
-
-  return (
-    <div className={styles.loginForm}>
-      {/* logo */}
-      <img className={styles.logo} alt='logo' />
-      {/* 登录表单 */}
-      <Login onSubmit={onSubmit}>
-        <UserName
-          name="username"
-          placeholder="guest"
-          rules={[{ required: true, message: "请输入用户名" }]}
+  render() {
+    return (
+      <div className={styles.loginForm}>
+        {/* logo */}
+        <img
+          className={styles.logo}
+          src=""
+          alt='logo'
         />
-        <Password
-          name="password"
-          placeholder="guest"
-          rules={[{ required: true, message: "请输入密码" }]}
-        />
-        <Submit>登录</Submit>
-      </Login>
-    </div>
-  );
-})
+        {/* 登录表单 */}
+        <Login onSubmit={this.onSubmit}>
+          <UserName
+            name="username"
+            placeholder="guest"
+            rules={[{ required: true, message: "请输入用户名" }]}
+          />
+          <Password
+            name="password"
+            placeholder="guest"
+            rules={[{ required: true, message: "请输入密码" }]}
+          />
+          <Submit>登录</Submit>
+        </Login>
+      </div>
+    );
+  }
+}

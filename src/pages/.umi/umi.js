@@ -23,6 +23,7 @@ plugins.init({
   ],
 });
 plugins.use(require('../../../node_modules/umi-plugin-dva/lib/runtime'));
+plugins.use(require('@/app'));
 
 const app = require('@tmp/dva')._onCreate();
 window.g_app = app;
@@ -153,7 +154,7 @@ try {
   require('C:/Users/jixia/AppData/Local/Yarn/Data/global/node_modules/umi-plugin-ui/lib/bubble').default(
     {
       port: 3000,
-      path: 'F:/GitHub/newfolder/umi-cart',
+      path: 'F:/GitHub/umi-cart',
       currentProject: '',
       isBigfish: undefined,
     },
@@ -219,6 +220,8 @@ try {
     el.innerHTML = '.g_umiuiBlockAddEditMode { display: none; }';
   };
 })();
+
+require('../../global.less');
 
 // hot module replacement
 if (__IS_BROWSER && module.hot) {

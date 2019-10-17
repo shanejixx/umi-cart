@@ -1,14 +1,12 @@
 export default {
-  'post /api/login'(req, res, next) {
+  "post /api/login"(req, res, next) {
     const { username, password } = req.body;
-
     console.log(username, password);
-
     if (username == "admin" && password == "admin") {
       return res.json({
         code: 0,
         data: {
-          token: "adminisgood",
+          token: "asminisgood",
           role: "admin",
           balance: 1000,
           username: "admin"
@@ -19,8 +17,8 @@ export default {
       return res.json({
         code: 0,
         data: {
-          token: "guestbaisgood",
-          role: "guest",
+          token: "guestisgood",
+          role: "user",
           balance: 100,
           username: "guest"
         }
@@ -31,4 +29,4 @@ export default {
       msg: "密码错误"
     });
   }
-}
+};

@@ -9,15 +9,13 @@ export default {
     ]
   ],
   routes: [
-
     { path: "/login", component: "./login" },
-
     {
       path: "/",
       component: "../layouts",
       routes: [
-        { path: "/", component: "./index" },
-        { path: "/goods", component: "./goods/index" },
+        // { path: "/", component: "./index" },
+        { path: "/", component: "./goods/index" },
         {
           path: "/about",
           component: "./about",
@@ -35,10 +33,6 @@ export default {
           component: "./404"
         }
       ]
-    },
-
-    {
-      component: "./404"
     }
   ]
 };

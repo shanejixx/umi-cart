@@ -19,11 +19,6 @@ const routes = [
     routes: [
       {
         path: '/',
-        component: require('../index').default,
-        exact: true,
-      },
-      {
-        path: '/goods',
         component: require('../goods/index').default,
         exact: true,
       },
@@ -70,10 +65,6 @@ const routes = [
           ),
       },
     ],
-  },
-  {
-    component: require('../404').default,
-    exact: true,
   },
   {
     component: () =>

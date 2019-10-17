@@ -1,53 +1,51 @@
-import axios from 'axios'
+import axios from "axios";
+import router from "umi/router";
 
-import router from 'umi/router'
-
-//localstorage
-const userInfo = JSON.parse(localStorage.getItem('userInfo')) || {
+const userinfo = JSON.parse(localStorage.getItem("userinfo")) || {
   token: "",
   role: "",
   username: "",
   balance: 0
-}
+};
 
-
-//servers api
+// api
 function login(payload) {
-  return axios.post('/api/login', payload)
+  return axios.post("/api/login", payload);
 }
 
 export default {
-  namespace: 'user',
-  state: userInfo,
+  namespace: "user", // 可省略
+  state: userinfo, // 初始状态：缓存或空对象
   effects: {
-    //action:user/login
+    // action: user/login
     *login({ payload }, { call, put }) {
-
       try {
-        const { data: { code, data: userInfo } } = yield call(login, payload)
-
-
-        if (code === 0) {
-          //登录成功
-          localStorage.setItem('userInfo', JSON.stringify(userInfo))
-          yield put({ type: 'init', payload: userInfo })
-
-          console.log('登陆成功');
-
-
-          router.push('/')
-
+        const {
+          data: { code, data: userinfo }
+        } = yield call(login, payload);
+        if (code == 0) {
+          // 登录成功: 缓存用户信息
+          localStorage.setItem("userinfo", JSON.stringify(userinfo));
+          yield put({ type: "init", payload: userinfo });
+          router.push("/");
+        } else {
+          // 登录失败：弹出提示信息，可以通过响应拦截器实现
         }
-      } catch (error) {
-        //登陆失败
-      }
-      
+      } catch (error) {}
     }
+    // *logout({ payload }, { call, put }) {
+    //   localStorage.removeItem("userinfo");
+    //   yield put({ type: "clear" });
+    //   router.push("/login");
+    // }
   },
-
   reducers: {
     init(state, action) {
-      return action.payload
+      // 覆盖旧状态
+      return action.payload;
     }
+    // clear(state, action) {
+    //   return initUserinfo;
+    // }
   }
-}
+};

@@ -4,8 +4,8 @@
 .content {
   margin: 16px;
 }
-.main {
-  padding: -50px;
+.box {
+  padding: 24px;
   background: #fff;
   min-height: 500px;
 }
@@ -13,8 +13,12 @@
   text-align: center;
 }
 
-.log{
+.logo {
   float: left;
-  width: 16px;
+  width: 160px;
   margin: 16px 16px 0 0;
+}
+
+.cart{
+  float: right;
 }

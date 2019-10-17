@@ -20,8 +20,9 @@ export function _onCreate() {
     app.use(plugin);
   });
   
-  app.model({ namespace: 'user', ...(require('F:/GitHub/newfolder/umi-cart/src/models/user.js').default) });
-app.model({ namespace: 'goods', ...(require('F:/GitHub/newfolder/umi-cart/src/pages/goods/models/goods.js').default) });
+  app.model({ namespace: 'cart', ...(require('F:/GitHub/umi-cart/src/models/cart.js').default) });
+app.model({ namespace: 'user', ...(require('F:/GitHub/umi-cart/src/models/user.js').default) });
+app.model({ namespace: 'goods', ...(require('F:/GitHub/umi-cart/src/pages/goods/models/goods.js').default) });
   return app;
 }
 
