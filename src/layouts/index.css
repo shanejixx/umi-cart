@@ -1,0 +1,20 @@
+.header {
+  color: white;
+}
+.content {
+  margin: 16px;
+}
+.main {
+  padding: -50px;
+  background: #fff;
+  min-height: 500px;
+}
+.footer {
+  text-align: center;
+}
+
+.log{
+  float: left;
+  width: 16px;
+  margin: 16px 16px 0 0;
+}
